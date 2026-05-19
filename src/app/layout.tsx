@@ -14,9 +14,28 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = "https://launchpad-aroa.vercel.app";
+
 export const metadata: Metadata = {
-  title: "Elena Voss",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Elena Voss",
+    template: "%s — Elena Voss",
+  },
   description: "Diseñadora de producto y desarrolladora frontend afincada en Berlín.",
+  openGraph: {
+    type: "website",
+    locale: "es_ES",
+    url: siteUrl,
+    siteName: "Elena Voss",
+    title: "Elena Voss",
+    description: "Diseñadora de producto y desarrolladora frontend afincada en Berlín.",
+  },
+  twitter: {
+    card: "summary",
+    title: "Elena Voss",
+    description: "Diseñadora de producto y desarrolladora frontend afincada en Berlín.",
+  },
 };
 
 export default function RootLayout({

@@ -1,25 +1,25 @@
 ---
-title: "Why spacing matters more than color"
+title: "Por qué el espaciado importa más que el color"
 date: "2024-11-10"
-summary: "Color gets all the glory, but spacing is what makes a layout feel right. Here's why I think about whitespace first."
+summary: "El color se lleva toda la gloria, pero el espaciado es lo que hace que un diseño se sienta bien. Por qué pienso primero en el espacio en blanco."
 ---
 
-Every designer has a moment when they realize color isn't the thing making their layouts feel off. For me, it happened while staring at a dashboard I'd been tweaking for two hours — adjusting shades, trying different palettes — when I finally added 8px of padding to a card and everything clicked.
+Toda diseñadora tiene un momento en el que se da cuenta de que el color no es lo que hace que sus layouts se vean mal. En mi caso ocurrió mientras miraba un dashboard que había estado ajustando durante dos horas — cambiando tonos, probando paletas — hasta que finalmente añadí 8px de padding a una tarjeta y todo encajó.
 
-## The invisible structure
+## La estructura invisible
 
-Spacing is the invisible structure of a design. It tells the eye what belongs together, what's separate, and where to rest. Color communicates mood and hierarchy, but spacing communicates *relationship*.
+El espaciado es la estructura invisible de un diseño. Le dice al ojo qué pertenece junto, qué está separado y dónde descansar. El color comunica estado de ánimo y jerarquía, pero el espaciado comunica *relación*.
 
-A button with too little padding feels cramped and untrustworthy, no matter how beautiful the color. A card with inconsistent internal spacing looks broken even if every element inside it is perfectly styled.
+Un botón con poco padding se siente apretado y poco fiable, sin importar lo bonito que sea el color. Una tarjeta con espaciado interno inconsistente parece rota aunque cada elemento dentro de ella esté perfectamente estilado.
 
-## Start with an 8px grid
+## Empieza con una cuadrícula de 8px
 
-The simplest thing you can do is commit to a spacing scale based on multiples of 8: `8, 16, 24, 32, 48, 64`. This single constraint eliminates hundreds of micro-decisions and creates visual rhythm without you having to think about it.
+Lo más sencillo que puedes hacer es comprometerte con una escala de espaciado basada en múltiplos de 8: `8, 16, 24, 32, 48, 64`. Esta única restricción elimina cientos de microdecisiones y crea ritmo visual sin que tengas que pensarlo.
 
-In Tailwind, this maps almost directly to `p-2, p-4, p-6, p-8, p-12, p-16`. Pick one and be consistent.
+En Tailwind, esto se corresponde casi directamente con `p-2, p-4, p-6, p-8, p-12, p-16`. Elige uno y sé consistente.
 
-## The test
+## La prueba
 
-Before you reach for a new color, try adding more breathing room. Nine times out of ten, the layout improves immediately. If it doesn't, *then* think about color.
+Antes de buscar un color nuevo, prueba a añadir más espacio. Nueve de cada diez veces, el layout mejora inmediatamente. Si no mejora, *entonces* piensa en el color.
 
-Good spacing makes color look better. Good color can't fix bad spacing.
+Un buen espaciado hace que el color quede mejor. Un buen color no puede arreglar un mal espaciado.

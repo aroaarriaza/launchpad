@@ -23,7 +23,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           href="/blog"
           className="text-sm text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 mb-10 block"
         >
-          ← Writing
+          ← Blog
         </Link>
         <p className="text-xs text-neutral-400 mb-2">{post.date}</p>
         <h1 className="text-2xl font-semibold tracking-tight mb-10">{post.title}</h1>

@@ -1,8 +1,13 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Sobre mí — Elena Voss",
-  description: "Diseñadora de producto y desarrolladora frontend afincada en Berlín.",
+  title: "Sobre mí",
+  description: "Diseñadora de producto y desarrolladora frontend afincada en Berlín. Bio, experiencia y habilidades.",
+  openGraph: {
+    title: "Sobre mí — Elena Voss",
+    description: "Diseñadora de producto y desarrolladora frontend afincada en Berlín.",
+    url: "/about",
+  },
 };
 
 const skills = [

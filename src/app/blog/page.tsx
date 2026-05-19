@@ -1,7 +1,15 @@
 import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
 
-export const metadata = { title: "Blog — Elena Voss" };
+export const metadata = {
+  title: "Blog",
+  description: "Artículos sobre diseño, código y la intersección entre ambos.",
+  openGraph: {
+    title: "Blog — Elena Voss",
+    description: "Artículos sobre diseño, código y la intersección entre ambos.",
+    url: "/blog",
+  },
+};
 
 export default function BlogPage() {
   const posts = getAllPosts();

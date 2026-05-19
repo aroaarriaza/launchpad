@@ -1,27 +1,27 @@
 ---
-title: "What I learned building my first plugin"
+title: "Lo que aprendí construyendo mi primer plugin"
 date: "2025-03-05"
-summary: "Building Open Hours, a Figma plugin for managing component states, taught me more about API design than anything I'd read before."
+summary: "Construir Open Hours, un plugin de Figma para gestionar estados de componentes, me enseñó más sobre diseño de APIs que cualquier cosa que hubiera leído antes."
 ---
 
-I built Open Hours to solve a problem I had every week: managing the different states of a component in Figma — default, hover, disabled, error — without losing track of which variant was which.
+Construí Open Hours para resolver un problema que tenía cada semana: gestionar los diferentes estados de un componente en Figma — por defecto, hover, deshabilitado, error — sin perder la pista de qué variante era cuál.
 
-The plugin itself is simple. The process of building it was not.
+El plugin en sí es sencillo. El proceso de construirlo no lo fue.
 
-## The Figma plugin API is surprisingly raw
+## La API de plugins de Figma es sorprendentemente cruda
 
-Unlike building a web app, where you have a full DOM and browser APIs, the Figma plugin environment is sandboxed. You communicate between the plugin UI (a web view) and Figma's main thread via `postMessage`. It sounds manageable until you realize that any mistake in message serialization silently fails.
+A diferencia de construir una aplicación web, donde tienes un DOM completo y APIs del navegador, el entorno del plugin de Figma está en un sandbox. Te comunicas entre la UI del plugin (una vista web) y el hilo principal de Figma mediante `postMessage`. Suena manejable hasta que te das cuenta de que cualquier error en la serialización de mensajes falla silenciosamente.
 
-My first lesson: define your message types strictly with TypeScript. Every message between the UI and the main thread should have a `type` field and be exhaustively typed. This saved me hours of debugging.
+Mi primera lección: define tus tipos de mensaje de forma estricta con TypeScript. Cada mensaje entre la UI y el hilo principal debe tener un campo `type` y estar tipado de forma exhaustiva. Esto me ahorró horas de depuración.
 
-## State is harder than logic
+## El estado es más difícil que la lógica
 
-The hardest part wasn't reading or writing Figma nodes. It was managing state across two sandboxed contexts — the plugin UI and the Figma thread — that can only communicate asynchronously.
+La parte más difícil no fue leer o escribir nodos de Figma. Fue gestionar el estado entre dos contextos en sandbox — la UI del plugin y el hilo de Figma — que solo pueden comunicarse de forma asíncrona.
 
-I ended up treating the Figma document as the source of truth and the UI as a read-only view that sends commands. No shared state, no sync issues.
+Terminé tratando el documento de Figma como la fuente de verdad y la UI como una vista de solo lectura que envía comandos. Sin estado compartido, sin problemas de sincronización.
 
-## Ship early, even to yourself
+## Lanza pronto, aunque sea para ti misma
 
-I launched Open Hours when it could do exactly one thing: rename variants according to a pattern I defined. That was enough. Using the plugin myself for two weeks surfaced every missing feature more clearly than any planning session could have.
+Lancé Open Hours cuando podía hacer exactamente una cosa: renombrar variantes según un patrón que yo definía. Eso era suficiente. Usar el plugin yo misma durante dos semanas reveló cada funcionalidad que faltaba con más claridad que cualquier sesión de planificación.
 
-The best roadmap is the one your users write by actually using the thing.
+El mejor roadmap es el que escriben tus usuarios al usar el producto de verdad.

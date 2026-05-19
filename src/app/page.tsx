@@ -3,25 +3,25 @@ import Link from "next/link";
 const projects = [
   {
     name: "Chromatic",
-    description: "Generate accessible color palettes from any image.",
+    description: "Genera paletas de color accesibles a partir de cualquier imagen.",
     url: "https://chromatic.design",
   },
   {
     name: "Readly",
-    description: "A minimal reading app with offline support.",
+    description: "Una app de lectura minimalista con soporte offline.",
     url: "https://readly.app",
   },
   {
     name: "Open Hours",
-    description: "A Figma plugin for managing component states.",
+    description: "Un plugin de Figma para gestionar estados de componentes.",
     url: "https://github.com/elenavoss/open-hours",
   },
 ];
 
 const posts = [
-  { slug: "why-spacing-matters", title: "Why spacing matters more than color" },
-  { slug: "figma-to-code", title: "From Figma to code: my frictionless workflow" },
-  { slug: "building-a-plugin", title: "What I learned building my first plugin" },
+  { slug: "why-spacing-matters", title: "Por qué el espaciado importa más que el color" },
+  { slug: "figma-to-code", title: "De Figma a código: mi flujo sin fricciones" },
+  { slug: "building-a-plugin", title: "Lo que aprendí construyendo mi primer plugin" },
 ];
 
 export default function Home() {
@@ -30,16 +30,16 @@ export default function Home() {
       <section>
         <h1 className="text-3xl font-semibold tracking-tight mb-4">Elena Voss</h1>
         <p className="text-lg leading-relaxed text-neutral-600 dark:text-neutral-400">
-          Product designer and frontend developer based in Berlin. I work at the
-          intersection of design and code, building interfaces that are both
-          beautiful and functional. Currently exploring motion design and scalable
-          design systems.
+          Diseñadora de producto y desarrolladora frontend afincada en Berlín. Trabajo
+          en la intersección entre diseño y código, construyendo interfaces que son
+          bonitas y funcionales a la vez. Actualmente explorando motion design y
+          sistemas de diseño escalables.
         </p>
       </section>
 
       <section>
         <h2 className="text-sm font-semibold uppercase tracking-widest text-neutral-400 mb-6">
-          Projects
+          Proyectos
         </h2>
         <ul className="space-y-6">
           {projects.map((project) => (
@@ -69,7 +69,7 @@ export default function Home() {
 
       <section>
         <h2 className="text-sm font-semibold uppercase tracking-widest text-neutral-400 mb-6">
-          Writing
+          Blog
         </h2>
         <ul className="space-y-4">
           {posts.map((post) => (

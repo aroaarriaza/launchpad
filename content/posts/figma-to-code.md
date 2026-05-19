@@ -1,27 +1,27 @@
 ---
-title: "From Figma to code: my frictionless workflow"
+title: "De Figma a código: mi flujo sin fricciones"
 date: "2025-01-22"
-summary: "How I stopped treating design and development as separate phases and started thinking in components from the very beginning."
+summary: "Cómo dejé de tratar el diseño y el desarrollo como fases separadas y empecé a pensar en componentes desde el principio."
 ---
 
-For years I treated Figma and VS Code as separate worlds. I'd finish a design, hand it off to myself (yes, I'm both), and then spend days translating decisions I'd already made once. It was exhausting and error-prone.
+Durante años traté Figma y VS Code como mundos separados. Terminaba un diseño, me lo pasaba a mí misma (sí, soy las dos), y luego pasaba días traduciendo decisiones que ya había tomado una vez. Era agotador y propenso a errores.
 
-The shift happened when I started designing *in the same language as the code*.
+El cambio llegó cuando empecé a diseñar *en el mismo lenguaje que el código*.
 
-## Design with components, not screens
+## Diseña con componentes, no con pantallas
 
-Instead of designing full pages, I now design components: a button, a card, a navigation bar. Each component in Figma maps directly to a component in code. When I finalize the button in Figma, I build it in code the same day — while every decision is still fresh.
+En lugar de diseñar páginas completas, ahora diseño componentes: un botón, una tarjeta, una barra de navegación. Cada componente en Figma se corresponde directamente con un componente en código. Cuando finalizo el botón en Figma, lo construyo en código ese mismo día — mientras cada decisión todavía está fresca.
 
-This means I'm never translating. I'm just moving.
+Esto significa que nunca estoy traduciendo. Solo estoy moviendo.
 
-## Use real constraints from the start
+## Usa restricciones reales desde el principio
 
-Tailwind's spacing scale and typography scale are the best thing that ever happened to my design workflow. I use an 8px grid in Figma that matches Tailwind's default scale. When I pick `gap-6` in code, I know exactly what it looks like because I designed with 24px gaps.
+La escala de espaciado y tipografía de Tailwind es lo mejor que le ha pasado a mi flujo de diseño. Uso una cuadrícula de 8px en Figma que coincide con la escala por defecto de Tailwind. Cuando elijo `gap-6` en código, sé exactamente cómo se ve porque diseñé con gaps de 24px.
 
-No more "this looked right in Figma but feels off in the browser."
+Nunca más "esto se veía bien en Figma pero se siente raro en el navegador".
 
-## Ship the component, then the page
+## Lanza el componente, luego la página
 
-My rule: no page exists until every component on it is built and tested. This forces me to think in reusable pieces and prevents the classic problem of designing beautiful screens that are impossible to implement consistently.
+Mi regla: ninguna página existe hasta que cada componente que hay en ella esté construido y probado. Esto me obliga a pensar en piezas reutilizables y evita el problema clásico de diseñar pantallas hermosas que son imposibles de implementar de forma consistente.
 
-The result is a codebase that reflects the design system, not a patchwork of one-off styles.
+El resultado es una base de código que refleja el sistema de diseño, no un collage de estilos únicos.

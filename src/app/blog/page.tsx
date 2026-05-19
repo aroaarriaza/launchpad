@@ -1,14 +1,14 @@
 import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
 
-export const metadata = { title: "Writing — Elena Voss" };
+export const metadata = { title: "Blog — Elena Voss" };
 
 export default function BlogPage() {
   const posts = getAllPosts();
   return (
     <main className="max-w-2xl mx-auto px-6 py-20">
       <h1 className="text-sm font-semibold uppercase tracking-widest text-neutral-400 mb-10">
-        Writing
+        Blog
       </h1>
       <ul className="space-y-10">
         {posts.map((post) => (

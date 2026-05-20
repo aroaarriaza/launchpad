@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { getRandomWord } from "@/lib/wordle-words";
+import { getRandomEntry } from "@/lib/wordle-words";
 import type { TileStatus, GameStatus, GuessResult } from "@/types/wordle";
 
 const STATUS_PRIORITY: Record<TileStatus, number> = {
@@ -38,6 +38,7 @@ function evaluateGuess(guess: string, target: string): TileStatus[] {
 
 export function useWordle() {
   const [target, setTarget] = useState("");
+  const [hint, setHint] = useState("");
   const [guesses, setGuesses] = useState<GuessResult[]>([]);
   const [current, setCurrent] = useState("");
   const [gameStatus, setGameStatus] = useState<GameStatus>("playing");
@@ -45,7 +46,9 @@ export function useWordle() {
   const [shake, setShake] = useState(false);
 
   useEffect(() => {
-    setTarget(getRandomWord());
+    const entry = getRandomEntry();
+    setTarget(entry.word);
+    setHint(entry.hint);
   }, []);
 
   const addLetter = useCallback(
@@ -97,7 +100,9 @@ export function useWordle() {
   }, [gameStatus, current, target]);
 
   const restart = useCallback(() => {
-    setTarget(getRandomWord());
+    const entry = getRandomEntry();
+    setTarget(entry.word);
+    setHint(entry.hint);
     setGuesses([]);
     setCurrent("");
     setGameStatus("playing");
@@ -118,5 +123,5 @@ export function useWordle() {
     return () => window.removeEventListener("keydown", onKey);
   }, [addLetter, removeLetter, submitGuess]);
 
-  return { target, guesses, current, gameStatus, letterMap, shake, addLetter, removeLetter, submitGuess, restart };
+  return { target, hint, guesses, current, gameStatus, letterMap, shake, addLetter, removeLetter, submitGuess, restart };
 }

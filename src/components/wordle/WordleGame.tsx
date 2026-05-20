@@ -5,7 +5,7 @@ import Board from "./Board";
 import Keyboard from "./Keyboard";
 
 export default function WordleGame() {
-  const { guesses, current, gameStatus, letterMap, target, shake, addLetter, removeLetter, submitGuess, restart } =
+  const { guesses, current, gameStatus, letterMap, target, hint, shake, addLetter, removeLetter, submitGuess, restart } =
     useWordle();
 
   return (
@@ -16,6 +16,13 @@ export default function WordleGame() {
           Adivina la palabra de 5 letras en 6 intentos
         </p>
       </div>
+
+      {hint && (
+        <div className="w-full rounded-lg border border-neutral-200 dark:border-neutral-800 px-4 py-3 text-center">
+          <p className="text-xs font-semibold uppercase tracking-widest text-neutral-400 mb-1">Pista</p>
+          <p className="text-sm text-neutral-700 dark:text-neutral-300 italic">"{hint}"</p>
+        </div>
+      )}
 
       <div className="min-h-[2rem] text-center">
         {gameStatus === "won" && (

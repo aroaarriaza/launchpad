@@ -27,12 +27,12 @@ export default function TaskForm({ onAdd }: TaskFormProps) {
         onChange={(e) => setValue(e.target.value)}
         placeholder="Nueva tarea..."
         autoFocus
-        className="flex-1 px-4 py-2.5 rounded-lg border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-400 dark:focus:ring-neutral-500"
+        className="flex-1 px-4 py-2.5 rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white/80 dark:bg-neutral-900/60 text-sm focus:outline-none focus:ring-2 focus:ring-violet-400 dark:focus:ring-violet-600 focus:border-violet-300 dark:focus:border-violet-700 transition-all"
       />
       <button
         type="submit"
         disabled={!value.trim()}
-        className="px-4 py-2.5 rounded-lg bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-sm font-medium disabled:opacity-30 transition-opacity"
+        className="px-4 py-2.5 rounded-xl bg-violet-600 hover:bg-violet-700 text-white text-sm font-medium disabled:opacity-30 disabled:cursor-not-allowed transition-all active:scale-95"
       >
         Añadir
       </button>

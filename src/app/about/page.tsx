@@ -44,7 +44,9 @@ export default function AboutPage() {
   return (
     <main className="max-w-2xl mx-auto px-6 py-20 space-y-20">
       <section>
-        <h1 className="text-3xl font-semibold tracking-tight mb-6">Sobre mí</h1>
+        <h1 className="text-3xl font-semibold tracking-tight mb-6 bg-gradient-to-r from-neutral-900 to-violet-700 dark:from-white dark:to-violet-400 bg-clip-text text-transparent">
+          Sobre mí
+        </h1>
         <div className="space-y-4 text-neutral-600 dark:text-neutral-400 leading-relaxed">
           <p>
             Soy Elena Voss, diseñadora de producto y desarrolladora frontend afincada en Berlín.
@@ -64,15 +66,22 @@ export default function AboutPage() {
       </section>
 
       <section>
-        <h2 className="text-sm font-semibold uppercase tracking-widest text-neutral-400 mb-8">
+        <h2 className="text-sm font-semibold uppercase tracking-widest text-violet-500 dark:text-violet-400 mb-8">
           Habilidades
         </h2>
-        <dl className="space-y-4">
+        <dl className="space-y-5">
           {skills.map(({ category, items }) => (
             <div key={category} className="flex gap-8">
               <dt className="w-28 shrink-0 text-sm text-neutral-400">{category}</dt>
-              <dd className="text-sm text-neutral-700 dark:text-neutral-300">
-                {items.join(", ")}
+              <dd className="flex flex-wrap gap-2">
+                {items.map((item) => (
+                  <span
+                    key={item}
+                    className="text-xs px-2.5 py-1 rounded-full bg-violet-50 dark:bg-violet-950/50 text-violet-700 dark:text-violet-300 border border-violet-100 dark:border-violet-900"
+                  >
+                    {item}
+                  </span>
+                ))}
               </dd>
             </div>
           ))}
@@ -80,17 +89,21 @@ export default function AboutPage() {
       </section>
 
       <section>
-        <h2 className="text-sm font-semibold uppercase tracking-widest text-neutral-400 mb-8">
+        <h2 className="text-sm font-semibold uppercase tracking-widest text-violet-500 dark:text-violet-400 mb-8">
           Experiencia
         </h2>
         <ul className="space-y-10">
-          {experience.map((job) => (
-            <li key={job.company}>
+          {experience.map((job, i) => (
+            <li
+              key={job.company}
+              className="slide-in pl-4 border-l-2 border-violet-100 dark:border-violet-900 hover:border-violet-400 dark:hover:border-violet-600 transition-colors duration-300"
+              style={{ animationDelay: `${i * 100}ms` }}
+            >
               <div className="flex items-baseline justify-between gap-4 mb-1">
                 <span className="font-medium">{job.role}</span>
                 <span className="text-xs text-neutral-400 shrink-0">{job.period}</span>
               </div>
-              <p className="text-sm text-neutral-400 mb-2">{job.company}</p>
+              <p className="text-sm text-violet-500 dark:text-violet-400 mb-2">{job.company}</p>
               <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
                 {job.description}
               </p>
@@ -100,14 +113,14 @@ export default function AboutPage() {
       </section>
 
       <section>
-        <h2 className="text-sm font-semibold uppercase tracking-widest text-neutral-400 mb-4">
+        <h2 className="text-sm font-semibold uppercase tracking-widest text-violet-500 dark:text-violet-400 mb-4">
           Contacto
         </h2>
         <p className="text-sm text-neutral-600 dark:text-neutral-400">
           Para proyectos, colaboraciones o simplemente para saludar:{" "}
           <a
             href="mailto:hello@elenavoss.com"
-            className="font-medium text-neutral-900 dark:text-neutral-100 hover:underline underline-offset-4"
+            className="font-medium text-violet-700 dark:text-violet-300 hover:underline underline-offset-4 transition-colors"
           >
             hello@elenavoss.com
           </a>

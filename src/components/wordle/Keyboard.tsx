@@ -7,10 +7,11 @@ const ROWS = [
 ];
 
 const keyStyles: Record<TileStatus, string> = {
-  correct: "bg-green-600 text-white",
-  present: "bg-yellow-500 text-white",
-  absent: "bg-neutral-400 text-white dark:bg-neutral-600",
-  empty: "bg-neutral-200 dark:bg-neutral-700 text-neutral-900 dark:text-neutral-100",
+  correct: "bg-emerald-500 text-white shadow-md shadow-emerald-500/30",
+  present: "bg-amber-400 text-white shadow-md shadow-amber-400/30",
+  absent: "bg-neutral-300 text-neutral-500 dark:bg-neutral-700 dark:text-neutral-400",
+  empty:
+    "bg-white dark:bg-neutral-800 text-neutral-800 dark:text-neutral-100 border border-neutral-200 dark:border-neutral-700 hover:border-violet-300 dark:hover:border-violet-700 hover:bg-violet-50 dark:hover:bg-violet-950/30",
 };
 
 interface KeyboardProps {
@@ -39,8 +40,8 @@ export default function Keyboard({ letterMap, onLetter, onBackspace, onEnter }: 
                 key={key}
                 onClick={() => handleKey(key)}
                 className={`
-                  ${isAction ? "px-2.5 text-xs min-w-[3.5rem]" : "w-9 text-sm"} h-14 rounded font-semibold
-                  select-none transition-colors active:scale-95
+                  ${isAction ? "px-2.5 text-xs min-w-[3.5rem]" : "w-9 text-sm"} h-12 rounded-lg font-semibold
+                  select-none transition-all duration-150 active:scale-90
                   ${keyStyles[status]}
                 `}
               >

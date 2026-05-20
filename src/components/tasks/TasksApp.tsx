@@ -30,21 +30,37 @@ export default function TasksApp() {
     filter === "done"
       ? "Ninguna tarea completada aún."
       : filter === "pending"
-      ? "No quedan tareas pendientes."
-      : "No hay tareas. ¡Añade una arriba!";
+      ? "No quedan tareas pendientes. ¡Todo listo!"
+      : "No hay tareas. Añade una arriba.";
+
+  const emptyIcon =
+    filter === "done" ? "✓" : filter === "pending" ? "🎉" : "📋";
 
   return (
     <div className="space-y-6">
+      {/* Header */}
       <div>
-        <h1 className="text-2xl font-semibold tracking-tight">Tareas</h1>
-        <p className="text-sm text-neutral-500 dark:text-neutral-400 mt-1">
+        <h1 className="font-display text-4xl font-semibold tracking-tight bg-gradient-to-br from-neutral-900 via-neutral-700 to-violet-700 dark:from-white dark:via-neutral-200 dark:to-violet-400 bg-clip-text text-transparent mb-1">
+          Tareas
+        </h1>
+        <p className="text-sm text-neutral-500 dark:text-neutral-400">
           {total === 0
             ? "Empieza añadiendo tu primera tarea"
             : pendingCount === 0
             ? "¡Todo listo! No quedan pendientes"
-            : `${pendingCount} ${pendingCount === 1 ? "tarea pendiente" : "tareas pendientes"}`}
+            : `${pendingCount} ${pendingCount === 1 ? "tarea pendiente" : "tareas pendientes"} de ${total}`}
         </p>
       </div>
+
+      {/* Progress bar */}
+      {total > 0 && (
+        <div className="h-1 rounded-full bg-neutral-100 dark:bg-neutral-800 overflow-hidden">
+          <div
+            className="h-full rounded-full bg-gradient-to-r from-violet-500 to-violet-600 transition-all duration-500"
+            style={{ width: `${(doneCount / total) * 100}%` }}
+          />
+        </div>
+      )}
 
       <TaskForm onAdd={addTask} />
 
@@ -52,36 +68,43 @@ export default function TasksApp() {
         <>
           {/* Filter tabs */}
           <div className="flex gap-1 border-b border-neutral-100 dark:border-neutral-800">
-            {FILTERS.map((f) => (
-              <button
-                key={f.value}
-                onClick={() => setFilter(f.value)}
-                className={`px-3 py-2 text-sm transition-colors border-b-2 -mb-px ${
-                  filter === f.value
-                    ? "border-neutral-900 dark:border-white font-medium"
-                    : "border-transparent text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100"
-                }`}
-              >
-                {f.label}
-                {f.value === "pending" && pendingCount > 0 && (
-                  <span className="ml-1.5 text-xs bg-neutral-200 dark:bg-neutral-700 rounded-full px-1.5 py-0.5">
-                    {pendingCount}
-                  </span>
-                )}
-                {f.value === "done" && doneCount > 0 && (
-                  <span className="ml-1.5 text-xs bg-neutral-200 dark:bg-neutral-700 rounded-full px-1.5 py-0.5">
-                    {doneCount}
-                  </span>
-                )}
-              </button>
-            ))}
+            {FILTERS.map((f) => {
+              const count = f.value === "pending" ? pendingCount : f.value === "done" ? doneCount : total;
+              return (
+                <button
+                  key={f.value}
+                  onClick={() => setFilter(f.value)}
+                  className={`px-3 py-2 text-sm transition-all border-b-2 -mb-px flex items-center gap-1.5 ${
+                    filter === f.value
+                      ? "border-violet-600 text-violet-700 dark:text-violet-300 dark:border-violet-500 font-medium"
+                      : "border-transparent text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100"
+                  }`}
+                >
+                  {f.label}
+                  {count > 0 && (
+                    <span
+                      className={`text-xs rounded-full px-1.5 py-0.5 leading-none transition-colors ${
+                        filter === f.value
+                          ? "bg-violet-100 dark:bg-violet-900/60 text-violet-700 dark:text-violet-300"
+                          : "bg-neutral-100 dark:bg-neutral-800 text-neutral-500 dark:text-neutral-400"
+                      }`}
+                    >
+                      {count}
+                    </span>
+                  )}
+                </button>
+              );
+            })}
           </div>
 
           {/* Task list */}
           {tasks.length === 0 ? (
-            <p className="text-sm text-neutral-400 text-center py-10">{emptyMessage}</p>
+            <div className="text-center py-14 space-y-3">
+              <p className="text-3xl">{emptyIcon}</p>
+              <p className="text-sm text-neutral-400 dark:text-neutral-500">{emptyMessage}</p>
+            </div>
           ) : (
-            <div className="rounded-lg border border-neutral-100 dark:border-neutral-800 divide-y divide-neutral-100 dark:divide-neutral-800 px-4">
+            <div className="rounded-2xl border border-neutral-100 dark:border-neutral-800 divide-y divide-neutral-100 dark:divide-neutral-800 px-4 bg-white/50 dark:bg-neutral-900/30">
               {tasks.map((task) => (
                 <TaskItem
                   key={task.id}
@@ -99,7 +122,7 @@ export default function TasksApp() {
             <div className="flex justify-end">
               <button
                 onClick={clearDone}
-                className="text-xs text-neutral-400 hover:text-red-500 transition-colors"
+                className="text-xs text-neutral-400 hover:text-red-500 dark:hover:text-red-400 transition-colors"
               >
                 Limpiar completadas ({doneCount})
               </button>

@@ -67,7 +67,6 @@ export function useWordle() {
   const submitGuess = useCallback(() => {
     if (gameStatus !== "playing") return;
     if (current.length !== 5) {
-      // Shake animation for incomplete word
       setShake(true);
       setTimeout(() => setShake(false), 400);
       return;
@@ -75,8 +74,8 @@ export function useWordle() {
 
     const guess = current;
     const statuses = evaluateGuess(guess, target);
+    const nextGuessCount = guesses.length + 1;
 
-    // Update letter keyboard map, keeping the best status per letter
     setLetterMap((prev) => {
       const next = { ...prev };
       guess.split("").forEach((letter, i) => {
@@ -89,15 +88,12 @@ export function useWordle() {
       return next;
     });
 
-    setGuesses((prev) => {
-      const next = [...prev, { word: guess, statuses }];
-      if (guess === target) setGameStatus("won");
-      else if (next.length >= 6) setGameStatus("lost");
-      return next;
-    });
-
+    setGuesses((prev) => [...prev, { word: guess, statuses }]);
     setCurrent("");
-  }, [gameStatus, current, target]);
+
+    if (guess === target) setGameStatus("won");
+    else if (nextGuessCount >= 6) setGameStatus("lost");
+  }, [gameStatus, current, target, guesses.length]);
 
   const restart = useCallback(() => {
     const entry = getRandomEntry();

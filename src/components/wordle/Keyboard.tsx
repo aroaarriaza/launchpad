@@ -3,7 +3,7 @@ import type { TileStatus } from "@/types/wordle";
 const ROWS = [
   ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
   ["A", "S", "D", "F", "G", "H", "J", "K", "L"],
-  ["ENTER", "Z", "X", "C", "V", "B", "N", "M", "⌫"],
+  ["ENTER", "Z", "X", "C", "V", "B", "N", "M", "BORRAR"],
 ];
 
 const keyStyles: Record<TileStatus, string> = {
@@ -22,7 +22,7 @@ interface KeyboardProps {
 
 export default function Keyboard({ letterMap, onLetter, onBackspace, onEnter }: KeyboardProps) {
   const handleKey = (key: string) => {
-    if (key === "⌫") onBackspace();
+    if (key === "BORRAR") onBackspace();
     else if (key === "ENTER") onEnter();
     else onLetter(key);
   };
@@ -32,14 +32,14 @@ export default function Keyboard({ letterMap, onLetter, onBackspace, onEnter }: 
       {ROWS.map((row, i) => (
         <div key={i} className="flex gap-1.5">
           {row.map((key) => {
-            const status = letterMap[key] ?? "empty";
-            const isWide = key === "ENTER" || key === "⌫";
+            const isAction = key === "ENTER" || key === "BORRAR";
+            const status = isAction ? "empty" : (letterMap[key] ?? "empty");
             return (
               <button
                 key={key}
                 onClick={() => handleKey(key)}
                 className={`
-                  ${isWide ? "px-3 text-xs" : "w-9"} h-14 rounded font-semibold text-sm
+                  ${isAction ? "px-2.5 text-xs min-w-[3.5rem]" : "w-9 text-sm"} h-14 rounded font-semibold
                   select-none transition-colors active:scale-95
                   ${keyStyles[status]}
                 `}

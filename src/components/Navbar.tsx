@@ -5,6 +5,7 @@ const links = [
   { href: "/", label: "Inicio" },
   { href: "/about", label: "Sobre mí" },
   { href: "/blog", label: "Blog" },
+  { href: "/wordle", label: "Wordle" },
 ];
 
 export default function Navbar() {

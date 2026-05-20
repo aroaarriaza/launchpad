@@ -44,7 +44,7 @@ export default function AboutPage() {
   return (
     <main className="max-w-2xl mx-auto px-6 py-20 space-y-20">
       <section>
-        <h1 className="text-3xl font-semibold tracking-tight mb-6 bg-gradient-to-r from-neutral-900 to-violet-700 dark:from-white dark:to-violet-400 bg-clip-text text-transparent">
+        <h1 className="font-display text-4xl font-semibold tracking-tight mb-6 bg-gradient-to-br from-neutral-900 via-neutral-700 to-violet-700 dark:from-white dark:via-neutral-200 dark:to-violet-400 bg-clip-text text-transparent">
           Sobre mí
         </h1>
         <div className="space-y-4 text-neutral-600 dark:text-neutral-400 leading-relaxed">
